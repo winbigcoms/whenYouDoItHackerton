@@ -4,18 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>when U do it</title>
+  <link rel="stylesheet" href="./style/normalize.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <script src="./script/moment.js"></script>
+  <script src="./script/seung.js"></script>
+  <script src="./script/hea.js"></script>
+  <script src="./script/min.js"></script>
 </head>
 <body>
-  <h1 class="a11y-hidden"></h1>
+  <h1 class="a11y-hidden">언제할꺼야</h1>
   <header class="header">
-    <h2 class="a11y-hidden"></h2>
+    <h2 class="a11y-hidden">현재 날짜 시간</h2>
     <section class="calendar">
       <div class="nowYearMonthTime">
-        <span class="nowYearMonth"></span>
-        <span class="nowTime"></span>
+        <span class="nowYearMonth">2020/06/09</span>
+        <span class="nowTime">08:43</span>
       </div>
       <div class="nowDate">
-        <span></span>
+        <span>월</span>
       </div>
     </section>
   </header>
@@ -40,7 +46,7 @@
         </li>
       </ul>
     </section>
-    <section class="addTodoSection">
+    <section class="addTodoSection hidden">
       <form action="javascript:void(0)" class="addTodoForm">
         <legend>할일 추가 하기</legend>
         <input type="text" maxlength="7" class="addTodoTitle">
