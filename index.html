@@ -3,9 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>when U do it</title>
 </head>
 <body>
-  
+  <h1 class="a11y-hidden"></h1>
+  <header class="header">
+    <h2 class="a11y-hidden"></h2>
+    <section class="calendar">
+      <div class="nowYearMonthTime">
+        <span class="nowYearMonth"></span>
+        <span class="nowTime"></span>
+      </div>
+      <div class="nowDate">
+        <span></span>
+      </div>
+    </section>
+  </header>
+  <main>
+    <h2 class="a11y-hidden"></h2>
+    <section class="todoSection">
+      <ul class="todos">
+        <li class="todo" id="">
+          <div class="todoExplain">
+            <h3 class="todoTitle"></h3>
+            <p class="todoCompleted"></p>
+            <p class="todoImportance"></p>
+            <p class="todoDeadLine"></p>
+            <p class="todoKeyword"></p>
+          </div>
+          <div>
+            <p class="todoContents"></p>
+            <button class="fixBtn"></button>
+            <button class="delBtn"></button>
+            <button class="completeBtn"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="addTodoSection">
+      <form action="javascript:void(0)" class="addTodoForm">
+        <legend>할일 추가 하기</legend>
+        <input type="text" maxlength="7" class="addTodoTitle">
+        <div class="addKeywordWarp">
+          <input type="text" maxlength="5" class="addTodoKeyword">
+          <div class="checkTodoKeyword"></div>
+        </div>
+        <section class="addImportanceSection">
+          <div class="addTodoImportance">
+            <button class="Star1">☆</button>
+            <button class="Star2">☆</button>
+            <button class="Star3">☆</button>
+            <button class="Star4">☆</button>
+            <button class="Star5">☆</button>
+          </div>
+        </section>
+        <section>
+          <label for="addTodoYear">
+            <select id="addTodoYear">
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+            </select>
+          </label>
+          <label for="addTodoMonth">
+            <select id="addTodoMonth">
+              <option value="01">1</option>
+              <option value="02">2</option>
+              <option value="03">3</option>
+              <option value="04">4</option>
+              <option value="05">5</option>
+              <option value="06">6</option>
+              <option value="07">7</option>
+              <option value="08">8</option>
+              <option value="09">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </label>
+          <label for="addTodoDay">
+            <select id="addTodoDay">
+              <option value="01">1</option>
+              <option value="02">2</option>
+              <option value="03">3</option>
+              <option value="04">4</option>
+              <option value="05">5</option>
+              <option value="06">6</option>
+              <option value="07">7</option>
+              <option value="08">8</option>
+              <option value="09">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+            </select>
+          </label>
+          <label for="addTodoHour">
+            <select id="addTodoHour">
+              <option value="00">0</option>
+              <option value="01">1</option>
+              <option value="02">2</option>
+              <option value="03">3</option>
+              <option value="04">4</option>
+              <option value="05">5</option>
+              <option value="06">6</option>
+              <option value="07">7</option>
+              <option value="08">8</option>
+              <option value="09">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18" selected>18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+            </select>
+          </label>
+          <label for="addTodoMinute">
+            <select id="addTodoMinute">
+              <option value="00" selected>0</option>
+              <option value="01">1</option>
+              <option value="02">2</option>
+              <option value="03">3</option>
+              <option value="04">4</option>
+              <option value="05">5</option>
+              <option value="06">6</option>
+              <option value="07">7</option>
+              <option value="08">8</option>
+              <option value="09">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+              <option value="32">32</option>
+              <option value="33">33</option>
+              <option value="34">34</option>
+              <option value="35">35</option>
+              <option value="36">36</option>
+              <option value="37">37</option>
+              <option value="38">38</option>
+              <option value="39">39</option>
+              <option value="40">40</option>
+              <option value="41">41</option>
+              <option value="42">42</option>
+              <option value="43">43</option>
+              <option value="44">44</option>
+              <option value="45">45</option>
+              <option value="46">46</option>
+              <option value="47">47</option>
+              <option value="48">48</option>
+              <option value="49">49</option>
+              <option value="50">50</option>
+              <option value="51">51</option>
+              <option value="52">52</option>
+              <option value="53">53</option>
+              <option value="54">54</option>
+              <option value="55">55</option>
+              <option value="56">56</option>
+              <option value="57">57</option>
+              <option value="58">58</option>
+              <option value="59">59</option>
+            </select>
+          </label>
+          <p class="comfirmDayState"></p>
+        </section>
+        <textarea id="" cols="30" rows="10" class="addTodoContents"></textarea>
+        <section class="addTodoBtnWarp">
+          <button class="addBtn"></button>
+          <button class="closeBtn"></button>
+        </section>
+      </form>
+    </section>
+    <button class="openAddTab"></button>
+  </main>
+  <footer>
+    <h2 class="a11y-hidden"></h2>
+  </footer>
 </body>
 </html>
