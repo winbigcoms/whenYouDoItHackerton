@@ -1,23 +1,3 @@
-let todos = [
-  {
-    id: 1,
-    todoTitle: '첫번째타이틀',
-    todoCompleted: false,
-    todoImportance: 0,
-    todoDeadLine: '2020/06/09/15:00',
-    todoKeyword: '#work #test',
-    todoContents: 'this is todo content'
-  },{
-    id: 2,
-    todoTitle: '두번째타이틀',
-    todoCompleted: false,
-    todoImportance: 0,
-    todoDeadLine: '2020/06/09/12:00',
-    todoKeyword: '#abc #fff',
-    addTodoContents: 'test test testtest'
-  }
-];
-
 (function (){
   // State
   let keywords = [];
@@ -73,6 +53,7 @@ let todos = [
           </div>
         </li>`;
       // console.log(todos);
+      $todos.innerHTML = '';
       $todos.innerHTML += html;
     })
   };
@@ -120,7 +101,6 @@ let todos = [
     let addKeywords = (keywords.length < 3) ? keywords = [...keywords, keyword] : keywords;
     
     let keywordsHtml = '';
-    console.log(addKeywords);
     addKeywords.forEach(addkeyword => {
       keywordsHtml += `<button class="checkTodoKeyword">${addkeyword}</button>`
     });
@@ -130,6 +110,20 @@ let todos = [
   // ----- Add Todo Keywords
   const addTodoKeywords = () => {
     return keywords.join(' ');
+  };
+
+  // ----- Remove Keyword
+  const removeKeyword = (e) => {
+      keywords = keywords.filter(keyword => {
+        console.log(e.target.textContent === keyword);
+        return keyword !== e.target.textContent
+      });
+      [...$checkTodoKeywords.children].forEach( btn => {
+        if (btn === e.target) $checkTodoKeywords.removeChild(e.target);
+      })
+
+    // });
+    //console.log(keywords);
   };
 
   // Event Handler
@@ -156,7 +150,8 @@ let todos = [
 
   // ---- Click Keyword in popup
   $checkTodoKeywords.onclick = (e) => {
-    // e.target.par
+    if (!e.target.matches('button')) return;
+    removeKeyword(e);
   };
 
   // ----- importance
