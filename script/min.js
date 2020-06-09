@@ -10,8 +10,9 @@
   const $addTodoSection = document.querySelector('.addTodoSection');
   const $addTodoTitle = document.querySelector('.addTodoTitle');
 
-  const $addTodoKeyword = document.querySelector('.addTodoKeyword');
+  const $checkTodoKeywords = document.querySelector('.checkTodoKeywords');
   const $checkTodoKeyword = document.querySelector('.checkTodoKeyword');
+  const $addTodoKeyword = document.querySelector('.addTodoKeyword');
 
   const $addTodoImportance = document.querySelector('.addTodoImportance');
   const $addTodoContents = document.querySelector('.addTodoContents');
@@ -30,29 +31,10 @@
   // Function
   // ----- render todos
   const render = () => {
-    todos = [
-      {
-        id: 1,
-        todoTitle: 'This is title',
-        todoCompleted: false,
-        todoImportance: 3,
-        todoDeadLine: '2020/06/09/12:00',
-        todoKeyword: ['keyword01', 'keyword02', 'keyword03'],
-        todoContents: 'This is todo contents'
-      },{
-        id: 2,
-        todoTitle: 'This is title02',
-        todoCompleted: false,
-        todoImportance: 3,
-        todoDeadLine: '2020/06/09/12:00',
-        todoKeyword: ['keyword01', 'keyword02', 'keyword03'],
-        todoContents: 'This is todo contents'
-      },
-      
-    ]
+
     let html = '';
     todos.forEach((todo) => {
-      html += `
+      html = `
       <li class="todo" id="${todo.id}">
         <div class="todoExplain">
           <h3 class="todoTitle">${todo.todoTitle}</h3>
@@ -69,9 +51,10 @@
         </div>
       </li>`;
     });
-    $todos.innerHTML = html;
-    
-    console.log(todos);
+    // console.log(todos);
+    $todos.innerHTML += html;
+
+    console.log('render', todos);
   };
 
 
@@ -86,25 +69,39 @@
       todoKeyword: checkTodoKeyword(),
       todoContents: $addTodoContents.value,
     }];
-    keywords = [];
-    console.log(todos);
+    keywords = '';
+    console.log('todoImportance', todos.todoImportance);
+
+    render();
   }; 
 
   // ----- Generate Id
   const genterateId = () => {
-    console.log(todos.map(todo => todo.id));
     return (todos.length) ? Math.max(...todos.map(todo => todo.id)) + 1 : 1;
   };
 
   // ----- Add Keyword 
   const getTodoImportance = id => {
-    importance = id;
+    console.log(id)
+    let importance = id;
+    return importance;
   };
 
   // ----- Check Todo Keyword
   const checkTodoKeyword = (keyword) => {
-    return (keywords.length < 3) ? keywords = [...keywords, keyword] : keywords;
+    let addKeywords = (keywords.length < 3) ? keywords = [...keywords, keyword] : keywords = [...keywords];
+    
+    let keywordsHtml = '';
+    console.log(addKeywords);
+    addKeywords.forEach(addkeyword => {
+      keywordsHtml += `<button class="checkTodoKeyword">${addkeyword}</button>`
+    });
+    $checkTodoKeywords.innerHTML = keywordsHtml;
+    // addKeywords = addKeywords;
   };
+
+  // ----- todoKeyword
+
   // Event Handler
   window.onload = render();
 
