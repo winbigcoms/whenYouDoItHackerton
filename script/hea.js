@@ -10,7 +10,15 @@ const $todos = document.querySelector('.todos');
 const $toggleTodo = document.getElementById('toggleTodo');
 $todos.onclick = ({ target }) => {
   if (!target.matches('.todo') && !target.matches('.todoExplain') && !target.matches('.todoTitle') && !target.matches('p')) return;
-   $toggleTodo.classList.toggle('hidden');
-   console.log($toggleTodo)
+  if (target.matches('.todo')) {
+    target.lastElementChild.classList.toggle('hidden');
+    // target.querySelector(".toggleTodo").classList.toggle('hidden');
+  } else if (target.matches('.todoExplain')) {
+    target.nextElementSibling.classList.toggle('hidden');
+  } else {
+    target.parentNode.nextElementSibling.classList.toggle('hidden');
+  }
+  
+   console.log(target);
 };
 
