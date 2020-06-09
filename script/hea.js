@@ -9,14 +9,12 @@ $openAddTab.onclick = () => {
 const $todos = document.querySelector('.todos');
 const $toggleTodo = document.getElementById('toggleTodo');
 
-// todos 삭제
-const $delBtn = document.querySelector('.delBtn');
-const delBtn = ({target}) => {
-  if (!target.matches('.todo > .toggleTodo > .delBtn')) return;
-  console.log(todos)
-  todos = todos.filter(todo => todo.id !== +target.parentNode.parentNode.id);
-};
-$todos.addEventListener('click', delBtn);
+// todos 수정
+
+// const $fixBtn = document.querySelector('.fixBtn');
+// $fixBtn.onclick = () => {
+//   $addTodoSection.classList.toggle('hidden'); 
+// };
 
 // 할 일(li) 클릭 시 창 아래로 길게 펼쳐지는 것  
 $todos.onclick = ({ target }) => {
@@ -25,23 +23,31 @@ $todos.onclick = ({ target }) => {
     target.lastElementChild.classList.toggle('hidden');
     // target.querySelector(".toggleTodo").classList.toggle('hidden');
   } else if (target.matches('.todoExplain')) {
-
     target.nextElementSibling.classList.toggle('hidden');
   } else {
-    
     target.parentNode.nextElementSibling.classList.toggle('hidden');
   }
 };
 
-// todos 수정
-// const $fixBtn = document.querySelector('.fixBtn');
-// $fixBtn.onclick = () => {
-//   $addTodoSection.classList.toggle('hidden'); 
-// };
-
+// todos 삭제
+// storage.removeItem(target.parentNode.parentNode.id);
+const $delBtn = document.querySelector('.delBtn');
+const delBtn = ({target}) => {
+  if (!target.matches('.todo > .toggleTodo > .delBtn')) return;
+  todos = todos.filter(todo => todo.id !== +(target.parentNode.parentNode.id));
+  render();
+};
+$todos.addEventListener('click', delBtn);
 
 // todos 완료체크
-// const $completeBtn = document.querySelector('.completeBtn');
-// $completeBtn.onclick = () => {
 
-// };
+const $completeBtn = document.querySelector('.completeBtn');
+const completeBtn = ({ target }) => {
+  if (!target.matches('.todo > .toggleTodo > .completeBtn')) return;
+  let todoObject = JSON.parse(localStorage.getItem(target.parentNode.parentNode.id));
+  todoObject.todoCompleted = true;
+  let todoJson = JSON.stringify(todoObject);
+  localStorage.setItem(target.parentNode.parentNode.id,todoJson);
+  render()
+};
+$todos.addEventListener('click', completeBtn);
