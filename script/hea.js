@@ -9,11 +9,8 @@ $openAddTab.onclick = () => {
 const $todos = document.querySelector('.todos');
 const $toggleTodo = document.querySelector('.toggleTodo');
 $todos.onclick = ({ target }) => {
-    if (!target.matches('.todos > li')) return;
-    $toggleTodo.classList.toggle('hidden');
-
+    if (!target.matches('.todo') && !target.matches('.todoExplain') && !target.matches('.todoTitle') && !target.matches('p')) return;
+    // if (!target.matches('.todo' && '.todoExplain' && '.todoTitle' && 'p')) return;
+   $toggleTodo.classList.toggle('hidden');
 };
 
-// todo 개별 이벤트_완료
-// todo 개별 이벤트_삭제
-// todo 개별 이벤트_수정
