@@ -1,6 +1,25 @@
+let todos = [
+  {
+    id: 1,
+    todoTitle: '첫번째타이틀',
+    todoCompleted: false,
+    todoImportance: 0,
+    todoDeadLine: '2020/06/09/15:00',
+    todoKeyword: '#work #test',
+    todoContents: 'this is todo content'
+  },{
+    id: 2,
+    todoTitle: '두번째타이틀',
+    todoCompleted: false,
+    todoImportance: 0,
+    todoDeadLine: '2020/06/09/12:00',
+    todoKeyword: '#abc #fff',
+    addTodoContents: 'test test testtest'
+  }
+];
+
 (function (){
-    // State
-  let todos = [];
+  // State
   let keywords = [];
   let importance = 0;
 
@@ -8,6 +27,7 @@
   const $todos = document.querySelector('.todos');
 
   const $addTodoSection = document.querySelector('.addTodoSection');
+  const $addTodoSectionForm = document.querySelector('.addTodoSection > form');
   const $addTodoTitle = document.querySelector('.addTodoTitle');
 
   const $checkTodoKeywords = document.querySelector('.checkTodoKeywords');
@@ -25,6 +45,7 @@
 
   const $comfirmDayState = document.querySelector('.comfirmDayState');
 
+  const $addTodoBtnWarp = document.querySelector('.addTodoBtnWarp');
   const $addTodoBtn = document.querySelector('.addTodoBtnWarp > .addBtn');
   const $closePopupBtn = document.querySelector('.addTodoBtnWarp > .closeBtn');
 
@@ -34,7 +55,7 @@
 
     let html = '';
     todos.forEach((todo) => {
-      html = `
+      html += `
       <li class="todo" id="${todo.id}">
         <div class="todoExplain">
           <h3 class="todoTitle">${todo.todoTitle}</h3>
@@ -52,7 +73,7 @@
       </li>`;
     });
     // console.log(todos);
-    $todos.innerHTML += html;
+    $todos.innerHTML = html;
 
     console.log('render', todos);
   };
@@ -64,13 +85,17 @@
       id: genterateId(),
       todoTitle: $addTodoTitle.value,
       todoCompleted: false,
-      todoImportance: getTodoImportance(),
+      todoImportance: importance,
       todoDeadLine: `${addTodoYear.value}/${addTodoMonth.value}/${addTodoDay.value}/${addTodoHour.value}:${addTodoMinute.value}`,
-      todoKeyword: checkTodoKeyword(),
+      todoKeyword: addTodoKeywords(),
       todoContents: $addTodoContents.value,
     }];
-    keywords = '';
-    console.log('todoImportance', todos.todoImportance);
+    // keywords = '';
+    if ($addTodoTitle.value === '') {
+      console.log('입력하세용');
+      // return false;
+    }
+    console.log('ok');
 
     render();
   }; 
@@ -82,14 +107,12 @@
 
   // ----- Add Keyword 
   const getTodoImportance = id => {
-    console.log(id)
-    let importance = id;
-    return importance;
+    return importance = id;
   };
 
   // ----- Check Todo Keyword
   const checkTodoKeyword = (keyword) => {
-    let addKeywords = (keywords.length < 3) ? keywords = [...keywords, keyword] : keywords = [...keywords];
+    let addKeywords = (keywords.length < 3) ? keywords = [...keywords, keyword] : keywords;
     
     let keywordsHtml = '';
     console.log(addKeywords);
@@ -98,6 +121,11 @@
     });
     $checkTodoKeywords.innerHTML = keywordsHtml;
     // addKeywords = addKeywords;
+  };
+
+  // ----- Add Todo Keywords
+  const addTodoKeywords = () => {
+    return keywords.join(' ');
   };
 
   // ----- todoKeyword
@@ -116,12 +144,14 @@
   // li의 id와, todo의 id 비교후 맞으면 todo의 keyword에 push 해주기
   $addTodoKeyword.onkeyup = e => {
     if (e.keyCode !== 13) return;
-    checkTodoKeyword($addTodoKeyword.value);
+    checkTodoKeyword(`#${$addTodoKeyword.value}`);
     $addTodoKeyword.value = '';
   };
 
   $addTodoBtn.onclick = () => {
     addTodo();
+    $addTodoSectionForm.reset();
+    importance = 0;
   };
 
   // ----- importance
@@ -134,6 +164,6 @@
         button.innerHTML = '☆';
       }
     });
-    getTodoImportance(e.target.id);
+    importance = +e.target.id;
   };
 })();
