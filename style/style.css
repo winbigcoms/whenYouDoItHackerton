@@ -1,6 +1,7 @@
 /* 공통 코드 */
 * {
   box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 ul, h3, p {
   margin: 0;
@@ -31,6 +32,7 @@ body {
 button {
   padding: 0;
   border: 0;
+  background-color: #fff;
 }
 
 /* 헤더 */
@@ -126,5 +128,64 @@ button {
 
 /* 할일 추가 탭 */
 .addTodoSection {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-35%);
+  width: calc(100% - 60px);
+  background-color: #fff;
+  padding: 10px;
+}
+.addTodoSection {
   display: block;
+}
+.addTodoForm p{
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.addTodoForm legend{
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+.addTodoForm input[type="text"] {
+  font-size: 12px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #deeded;
+  padding: 5px 0;
+}
+.addTodoTitle {
+  margin-bottom: 30px;
+}
+.checkTodoKeywords {
+  height: 50px;
+  margin-top: 10px;
+}
+.addTodoImportance button, .comfirmDayState{
+  color: #f99192;
+}
+.addImportanceSection {
+  height: 60px;
+}
+.checkTodoKeyword {
+  color: #fff;
+  background-color: #f99192;
+  font-size: 12px;
+  width: 70px;
+  height: 20px;
+  border-radius: 10px;
+  margin-right: 5px;
+  font-weight: bold;
+}
+.addTodoDeadline label{
+  font-size: 13px;
+}
+.addTodoDeadline select{
+  font-size: 12px;
+  border: 1px solid #ddd;
+}
+.comfirmDayState {
+  height: 13px;
+  padding: 5px 0;
 }

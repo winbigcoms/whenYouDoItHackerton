@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>when U do it</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style/fontello-0dc5704e/fontello-0dc5704e/css/fontello-embedded.css">
   <link rel="stylesheet" href="./style/normalize.css">
   <link rel="stylesheet" href="./style/style.css">
   <script src="./script/moment.js"></script>
-  <script src="./script/seung.js"></script>
-  <script src="./script/hea.js"></script>
-  <script src="./script/min.js"></script>
+  <script src="./script/seung.js" defer></script>
+  <script src="./script/hea.js" defer></script>
+  <script src="./script/min.js" defer></script>
 </head>
 <body>
   <h1 class="a11y-hidden">언제할꺼야</h1>
@@ -50,12 +51,15 @@
     <section class="addTodoSection">
       <form action="javascript:void(0)" class="addTodoForm">
         <legend>할일 추가 하기</legend>
-        <input type="text" maxlength="7" class="addTodoTitle">
+        <input type="text" maxlength="7" class="addTodoTitle" placeholder="제목을 입력해주세요(7자 이내)">
         <div class="addKeywordWarp">
-          <input type="text" maxlength="5" class="addTodoKeyword">
-          <div class="checkTodoKeyword"></div>
+          <input type="text" maxlength="5" class="addTodoKeyword" placeholder="키워드(5자 이하, 3개 까지">
+          <div class="checkTodoKeywords">
+            <button class="checkTodoKeyword">#일이삼사오</button>
+          </div>
         </div>
         <section class="addImportanceSection">
+          <p>중요도</p>
           <div class="addTodoImportance">
             <button class="Star1" id="1">☆</button>
             <button class="Star2" id="2">☆</button>
@@ -64,7 +68,8 @@
             <button class="Star5" id="5">☆</button>
           </div>
         </section>
-        <section>
+        <section class="addTodoDeadline">
+          <p>마감일</p>
           <label for="addTodoYear">
             <select id="addTodoYear">
               <option value="2020">2020</option>
@@ -73,7 +78,7 @@
               <option value="2023">2023</option>
               <option value="2024">2024</option>
               <option value="2025">2025</option>
-            </select>
+            </select>년
           </label>
           <label for="addTodoMonth">
             <select id="addTodoMonth">
@@ -89,7 +94,7 @@
               <option value="10">10</option>
               <option value="11">11</option>
               <option value="12">12</option>
-            </select>
+            </select>월
           </label>
           <label for="addTodoDay">
             <select id="addTodoDay">
@@ -124,7 +129,7 @@
               <option value="29">29</option>
               <option value="30">30</option>
               <option value="31">31</option>
-            </select>
+            </select>일
           </label>
           <label for="addTodoHour">
             <select id="addTodoHour">
@@ -152,7 +157,7 @@
               <option value="21">21</option>
               <option value="22">22</option>
               <option value="23">23</option>
-            </select>
+            </select>:
           </label>
           <label for="addTodoMinute">
             <select id="addTodoMinute">
@@ -218,7 +223,7 @@
               <option value="59">59</option>
             </select>
           </label>
-          <p class="comfirmDayState"></p>
+          <p class="comfirmDayState">올바른 날짜를 입력해주세요</p>
         </section>
         <textarea id="" cols="30" rows="10" class="addTodoContents"></textarea>
         <section class="addTodoBtnWarp">
@@ -227,7 +232,8 @@
         </section>
       </form>
     </section>
-    <button class="openAddTab"></button>
+    <button class="openAddTab">asd
+    </button>
   </main>
   <footer>
     <h2 class="a11y-hidden"></h2>
