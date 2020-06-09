@@ -4,7 +4,7 @@ const $nowDate = document.querySelector(".nowDate > span");
 const calDate = () => {
   if (moment().format("ddd") === "Mon") return "월"
   if (moment().format("ddd") === "Tue") return "화"
-  if (moment().format("ddd") === "wed") return "수"
+  if (moment().format("ddd") === "Wed") return "수"
   if (moment().format("ddd") === "Thu") return "목"
   if (moment().format("ddd") === "Fir") return "금"
   if (moment().format("ddd") === "Sat") return "토"
@@ -23,8 +23,8 @@ setInterval(setFirstView,1000)
 
 window.onload= setFirstView;
 
-$addTodoForm.onkeyup = e => {
-  e.preventDefault();
+$addTodoForm.onkeydown = e => {
+  if(e.keyCode === 13)e.preventDefault();
 }
 
 const $addTodoYear = document.querySelector("#addTodoYear");

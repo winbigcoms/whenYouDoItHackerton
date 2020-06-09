@@ -3,20 +3,14 @@ const $openAddTab = document.querySelector('.openAddTab');
 const $addTodoSection = document.querySelector('.addTodoSection');
 
 $openAddTab.onclick = () => {
-    $addTodoSection.classList.toggle('hidden');
-  };
+  addState = "add"
+  $addTodoSection.classList.toggle('hidden');
+};
 
-const $todos = document.querySelector('.todos');
 const $toggleTodo = document.getElementById('toggleTodo');
 
 // todos 수정
 
-// const $fixBtn = document.querySelector('.fixBtn');
-// $fixBtn.onclick = () => {
-//   $addTodoSection.classList.toggle('hidden'); 
-// };
-
-// 할 일(li) 클릭 시 창 아래로 길게 펼쳐지는 것  
 $todos.onclick = ({ target }) => {
   if (!target.matches('.todo') && !target.matches('.todoExplain') && !target.matches('.todoTitle') && !target.matches('p')) return;
   if (target.matches('.todo')) {
@@ -36,6 +30,7 @@ const delBtn = ({target}) => {
   localStorage.removeItem(target.parentNode.parentNode.id);
   render();
 };
+
 $todos.addEventListener('click', delBtn);
 
 // todos 완료체크
@@ -44,10 +39,21 @@ const $completeBtn = document.querySelector('.completeBtn');
 const completeBtn = ({ target }) => {
   if (!target.matches('.todo > .toggleTodo > .completeBtn')) return;
   let todoObject = JSON.parse(localStorage.getItem(target.parentNode.parentNode.id));
-  console.log(todoObject)
-  todoObject.todoCompleted = true;
+  todoObject.todoCompleted = !todoObject.todoCompleted;
   let todoJson = JSON.stringify(todoObject);
   localStorage.setItem(target.parentNode.parentNode.id,todoJson);
   render()
 };
 $todos.addEventListener('click', completeBtn);
+
+// todo 수정
+const $fixBtn = document.querySelector("fixBtn");
+const fixBtn = ({target}) => {
+  if (!target.matches('.todo > .toggleTodo > .fixBtn')) return;
+  addState = "fixed";
+  fixedId = target.parentNode.parentNode.id;
+  const $addTodoTitle = document.querySelector('.addTodoTitle');
+  const $checkTodoKeywords = document.querySelector('.checkTodoKeywords');
+  $addTodoSection.classList.toggle('hidden');
+}
+$todos.addEventListener('click',fixBtn)
