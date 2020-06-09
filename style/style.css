@@ -35,6 +35,12 @@ button {
   background-color: #fff;
 }
 
+.completed {
+  border-left-color: #086a6a;
+}
+.completed .todoExplain .todoCompleted {
+  background-color: #086a6a;
+}
 /* 헤더 */
 .header {
   height: 130px;
@@ -131,7 +137,7 @@ button {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-58%);
+  transform: translate(-50%,-53%);
   width: calc(100% - 60px);
   background-color: #fff;
   padding: 10px;
@@ -206,6 +212,7 @@ p.comfirmDayState {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 20px 0;
 }
 .addTodoBtnWarp button {
   width: 48%;

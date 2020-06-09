@@ -20,4 +20,5 @@ $todos.onclick = ({ target }) => {
   }
   
    console.log(target);
+
 };
