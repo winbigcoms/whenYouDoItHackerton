@@ -58,7 +58,7 @@ const isTimeOk = () => {
     $comfirmDayState.innerHTML = `${+month}월은 30일까지 밖에 없어요~`
   }
   if ( moment().format("YYYYMMDDHHmm") > fullDeadline) {
-    $comfirmDayState.innerHTML = `미래의 시간을 설정해주세요`
+    $comfirmDayState.innerHTML = `미래의 시간을 설정해주세요`;
   }
 }
 $addTodoYear.onblur = isTimeOk;
