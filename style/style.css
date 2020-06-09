@@ -1,0 +1,191 @@
+/* 공통 코드 */
+* {
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+ul, h3, p {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+body {
+  padding: 15px;
+  background-image: linear-gradient(rgb(138,214,204),#afdfdf);
+  background-color: #afdfdf;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.a11y-hidden {
+  position: absolute !important;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+.hidden {
+  display: none !important
+}
+button {
+  padding: 0;
+  border: 0;
+  background-color: #fff;
+}
+
+/* 헤더 */
+.header {
+  height: 130px;
+  width: 100%;
+  padding: 45px 15px 15px;
+  color: #fff;
+}
+.calendar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  text-align: center;
+}
+.calendar > div {
+  display: inline-block
+}
+.nowYearMonthTime {
+  text-align: left;
+}
+.nowYearMonth{
+  font-size: 1.4em;
+  display: block;
+}
+.nowTime{
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.nowDate {
+  font-size: 3em;
+}
+/* main */
+
+.todoSection {
+  padding: 15px;
+}
+
+.todo {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 10px solid #faf6b2;
+}
+
+.todoExplain {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.todoExplain > p{
+  display: inline-block;
+  font-size: 0.875em;
+  margin: 3px 0;
+}
+.todoExplain > p:not(:last-child) {
+  width: 120px;
+}
+.todoExplain > p:not(:last-child):nth-child(n+3) {
+  margin-bottom: 5px;
+}
+.todoExplain p.todoCompleted {
+  border: 1px solid #faf6b2;
+  background-color: #faf6b2;
+  border-radius: 5px;
+  width: 60px;
+  text-align: center;
+
+}
+.todoTitle {
+  margin: 3px 0;
+  display: inline-block;
+  font-size: 1em;
+  width: 120px;
+}
+
+.toggleTodo {
+  display: block;
+  text-align: right;
+}
+.todoContents {
+  text-align: left;
+  background-color: #f2f2f2;
+  padding: 10px 5px;
+  margin: 10px 0;
+  font-size: 0.875em;
+  text-indent: 0.5em;
+}
+.toggleTodo button:not(:first-child) {
+  margin-left: 5px;
+}
+
+/* 할일 추가 탭 */
+.addTodoSection {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-35%);
+  width: calc(100% - 60px);
+  background-color: #fff;
+  padding: 10px;
+}
+.addTodoSection {
+  display: block;
+}
+.addTodoForm p{
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.addTodoForm legend{
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+.addTodoForm input[type="text"] {
+  font-size: 12px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #deeded;
+  padding: 5px 0;
+}
+.addTodoTitle {
+  margin-bottom: 30px;
+}
+.checkTodoKeywords {
+  height: 50px;
+  margin-top: 10px;
+}
+.addTodoImportance button, .comfirmDayState{
+  color: #f99192;
+}
+.addImportanceSection {
+  height: 60px;
+}
+.checkTodoKeyword {
+  color: #fff;
+  background-color: #f99192;
+  font-size: 12px;
+  width: 70px;
+  height: 20px;
+  border-radius: 10px;
+  margin-right: 5px;
+  font-weight: bold;
+}
+.addTodoDeadline label{
+  font-size: 13px;
+}
+.addTodoDeadline select{
+  font-size: 12px;
+  border: 1px solid #ddd;
+}
+.comfirmDayState {
+  height: 13px;
+  padding: 5px 0;
+}
