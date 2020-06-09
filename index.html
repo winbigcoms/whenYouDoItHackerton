@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>when U do it</title>
+  <link rel="stylesheet" href="./style/fontello-0dc5704e/fontello-0dc5704e/css/fontello-embedded.css">
   <link rel="stylesheet" href="./style/normalize.css">
   <link rel="stylesheet" href="./style/style.css">
   <script src="./script/moment.js"></script>
@@ -37,16 +38,16 @@
             <p class="todoDeadLine">2020/06/18/20:00</p>
             <p class="todoKeyword">#일이삼사오#일이삼사오#일이삼사오</p>
           </div>
-          <div class="toggleTodo hidden">
-            <p class="todoContents"></p>
-            <button class="fixBtn"></button>
-            <button class="delBtn"></button>
-            <button class="completeBtn"></button>
+          <div class="toggleTodo">
+            <p class="todoContents">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
+            <button class="fixBtn icon-pencil"></button>
+            <button class="delBtn icon-trash-empty"></button>
+            <button class="completeBtn icon-ok"></button>
           </div>
         </li>
       </ul>
     </section>
-    <section class="addTodoSection hidden">
+    <section class="addTodoSection">
       <form action="javascript:void(0)" class="addTodoForm">
         <legend>할일 추가 하기</legend>
         <input type="text" maxlength="7" class="addTodoTitle">
@@ -56,11 +57,11 @@
         </div>
         <section class="addImportanceSection">
           <div class="addTodoImportance">
-            <button class="Star1">☆</button>
-            <button class="Star2">☆</button>
-            <button class="Star3">☆</button>
-            <button class="Star4">☆</button>
-            <button class="Star5">☆</button>
+            <button class="Star1" id="1">☆</button>
+            <button class="Star2" id="2">☆</button>
+            <button class="Star3" id="3">☆</button>
+            <button class="Star4" id="4">☆</button>
+            <button class="Star5" id="5">☆</button>
           </div>
         </section>
         <section>

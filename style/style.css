@@ -2,7 +2,7 @@
 * {
   box-sizing: border-box;
 }
-ul {
+ul, h3, p {
   margin: 0;
   padding: 0;
 }
@@ -37,7 +37,7 @@ button {
 .header {
   height: 130px;
   width: 100%;
-  padding: 15px;
+  padding: 45px 15px 15px;
   color: #fff;
 }
 .calendar {
@@ -80,20 +80,29 @@ button {
 .todoExplain {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-between;
 }
 .todoExplain > p{
   display: inline-block;
   font-size: 0.875em;
+  margin: 3px 0;
 }
 .todoExplain > p:not(:last-child) {
   width: 120px;
 }
-.todoCompleted {
+.todoExplain > p:not(:last-child):nth-child(n+3) {
+  margin-bottom: 5px;
+}
+.todoExplain p.todoCompleted {
   border: 1px solid #faf6b2;
   background-color: #faf6b2;
   border-radius: 5px;
+  width: 60px;
+  text-align: center;
+
 }
 .todoTitle {
+  margin: 3px 0;
   display: inline-block;
   font-size: 1em;
   width: 120px;
@@ -101,9 +110,21 @@ button {
 
 .toggleTodo {
   display: block;
+  text-align: right;
+}
+.todoContents {
+  text-align: left;
+  background-color: #f2f2f2;
+  padding: 10px 5px;
+  margin: 10px 0;
+  font-size: 0.875em;
+  text-indent: 0.5em;
+}
+.toggleTodo button:not(:first-child) {
+  margin-left: 5px;
 }
 
-
+/* 할일 추가 탭 */
 .addTodoSection {
   display: block;
 }

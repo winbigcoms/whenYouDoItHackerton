@@ -27,11 +27,12 @@
   font-style: normal;
   font-weight: normal;
   speak: never;
- 
+  background-color: #fff;
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  margin-right: .2em;
+  padding-right: .2em;
+  padding-top: .2em;
   text-align: center;
   /* opacity: .8; */
  
@@ -44,7 +45,7 @@
  
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2em;
+  padding-left: .2em;
  
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
