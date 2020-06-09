@@ -185,7 +185,19 @@ button {
   font-size: 12px;
   border: 1px solid #ddd;
 }
-.comfirmDayState {
+.settingDeadline {
+  display: flex;
+  justify-content: space-between;
+}
+p.comfirmDayState {
   height: 13px;
-  padding: 5px 0;
+  margin: 10px 0;
+}
+.addTodoContents{
+  resize: none;
+  height: 63px;
+  width: 100%;
+  font-size: 12px;
+  margin-bottom: 13px;
+  border: 1px solid ;
 }
