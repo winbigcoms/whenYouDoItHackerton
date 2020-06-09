@@ -1,12 +1,14 @@
 // 추가 버튼 클릭 시 폼 띄우기
 const $openAddTab = document.querySelector('.openAddTab');
 const $addTodoSection = document.querySelector('.addTodoSection');
-
+const $addTodoBtn = document.querySelector('.addTodoBtnWarp > .addBtn');
+const $addTodoTitle = document.querySelector('.addTodoTitle');
+const $checkTodoKeyword = document.querySelector('.checkTodoKeywords');
 $openAddTab.onclick = () => {
-    $addTodoSection.classList.toggle('hidden');
-  };
+  $addTodoSection.classList.toggle('hidden');
+  if($addTodoSection.classList.item('hidden') && $addTodoTitle.value === '' && $checkTodoKeyword.children.length === 0) $addTodoBtn.disabled = true
+};
 
-const $todos = document.querySelector('.todos');
 const $toggleTodo = document.getElementById('toggleTodo');
 
 // todos 수정
@@ -30,11 +32,10 @@ $todos.onclick = ({ target }) => {
 };
 
 // todos 삭제
-// storage.removeItem(target.parentNode.parentNode.id);
 const $delBtn = document.querySelector('.delBtn');
 const delBtn = ({target}) => {
   if (!target.matches('.todo > .toggleTodo > .delBtn')) return;
-  todos = todos.filter(todo => todo.id !== +(target.parentNode.parentNode.id));
+  localStorage.removeItem(target.parentNode.parentNode.id)
   render();
 };
 $todos.addEventListener('click', delBtn);

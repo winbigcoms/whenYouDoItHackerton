@@ -1,37 +1,44 @@
-let todos = [
-  {
-    id: 1,
-    todoTitle: '첫번째타이틀',
-    todoCompleted: false,
-    todoImportance: 0,
-    todoDeadLine: '2020/06/09/15:00',
-    todoKeyword: '#work #test',
-    todoContents: 'this is todo content'
-  },{
-    id: 2,
-    todoTitle: '두번째타이틀',
-    todoCompleted: false,
-    todoImportance: 0,
-    todoDeadLine: '2020/06/09/12:00',
-    todoKeyword: '#abc #fff',
-    addTodoContents: 'test test testtest'
-  }
-];
+const $todos = document.querySelector('.todos');
 
+const render = () => {
+  const todosKey = Object.keys(localStorage) // 로컬 스토리지 키들로 이루어진 배열
+  $todos.innerHTML = "";
+  let html = '';
+  todosKey.forEach( key => {
+    let todosObj = JSON.parse(localStorage.getItem(key));
+      html += `
+      <li class="todo" id="${todosObj.id}">
+        <div class="todoExplain">
+          <h3 class="todoTitle">${todosObj.todoTitle}</h3>
+          <p class="todoCompleted">${todosObj.todoCompleted}</p>
+          <p class="todoImportance">${todosObj.todoImportance}</p>
+          <p class="todoDeadLine">${todosObj.todoDeadLine}</p>
+          <p class="todoKeyword">${todosObj.todoKeyword}</p>
+        </div>
+        <div class="hidden toggleTodo" id="toggleTodo">
+          <p class="todoContents">${todosObj.todoContents}</p>
+          <button class="fixBtn icon-pencil"></button>
+          <button class="delBtn icon-trash-empty"></button>
+          <button class="completeBtn icon-ok"></button>
+        </div>
+      </li>`;
+    // console.log(todos);
+    $todos.innerHTML += html;
+  })
+};
 (function (){
   // State
   let keywords = [];
   let importance = 0;
 
   // Doms
-  const $todos = document.querySelector('.todos');
 
   const $addTodoSection = document.querySelector('.addTodoSection');
   const $addTodoSectionForm = document.querySelector('.addTodoSection > form');
   const $addTodoTitle = document.querySelector('.addTodoTitle');
 
-  const $checkTodoKeywords = document.querySelector('.checkTodoKeywords');
-  const $checkTodoKeyword = document.querySelector('.checkTodoKeyword');
+    const $checkTodoKeywords = document.querySelector('.checkTodoKeywords');
+    const $checkTodoKeyword = document.querySelector('.checkTodoKeyword');
   const $addTodoKeyword = document.querySelector('.addTodoKeyword');
 
   const $addTodoImportance = document.querySelector('.addTodoImportance');
@@ -50,38 +57,20 @@ let todos = [
   const $closePopupBtn = document.querySelector('.addTodoBtnWarp > .closeBtn');
 
   // Function
-  // ----- render todos
-  const render = () => {
-    const todosKey = Object.keys(localStorage) // 로컬 스토리지 키들로 이루어진 배열
-    todosKey.forEach( key => {
-      let todosObj = JSON.parse(localStorage.getItem(key));
-      let html = '';
-        html += `
-        <li class="todo" id="${todosObj.id}">
-          <div class="todoExplain">
-            <h3 class="todoTitle">${todosObj.todoTitle}</h3>
-            <p class="todoCompleted">${todosObj.todoCompleted}</p>
-            <p class="todoImportance">${todosObj.todoImportance}</p>
-            <p class="todoDeadLine">${todosObj.todoDeadLine}</p>
-            <p class="todoKeyword">${todosObj.todoKeyword}</p>
-          </div>
-          <div class="hidden toggleTodo" id="toggleTodo">
-            <p class="todoContents">${todosObj.todoContents}</p>
-            <button class="fixBtn icon-pencil"></button>
-            <button class="delBtn icon-trash-empty"></button>
-            <button class="completeBtn icon-ok"></button>
-          </div>
-        </li>`;
-      // console.log(todos);
-      $todos.innerHTML += html;
-    })
-  };
-
+$addTodoTitle.onblur = () => {
+  if(!($addTodoTitle.value === '') && !($checkTodoKeywords.children.length === 0)) {
+    $addTodoBtn.disabled = false
+  }
+}
+$addTodoKeyword.onblur = () => {
+  if(!($addTodoTitle.value === '') && !($checkTodoKeywords.children.length === 0)) {
+    $addTodoBtn.disabled = false
+  }
+}
 
   // ----- Add todo
   const addTodo = () => {
-    let addTodoObject;
-    addTodoObject = {
+    let addTodoObject = {
       id: genterateId(),
       todoTitle: $addTodoTitle.value,
       todoCompleted: false,
@@ -90,37 +79,37 @@ let todos = [
       todoKeyword: addTodoKeywords(),
       todoContents: $addTodoContents.value,
     }
-    localStorage.setItem(`${genterateId()}`,JSON.stringify(addTodoObject));
+    localStorage.setItem(`${addTodoObject.id}`,JSON.stringify(addTodoObject));
     
     
     // keywords = '';
     if ($addTodoTitle.value === '') {
       $addTodoTitle.focus();
       $addTodoTitle.setAttribute('placeholder', '!!!!!빈칸없이 입력해주세요.');
-      return false;
+      $addTodoBtn.disabled = true
+      return;
     } else if ($addTodoContents.value === '') {
       $addTodoContents.focus();
       $addTodoContents.setAttribute('placeholder', '!!!!!빈칸없이 입력해주세요.');
-      return false;
+      return;
     }
     
     $addTodoSectionForm.reset();
     importance = 0;
-
+    const $openAddTab = document.querySelector('.openAddTab');
+    $addTodoSection.classList.toggle('hidden');
     render();
   }; 
 
   // ----- Generate Id
   const genterateId = () => {
-    return (todos.length) ? Math.max(...todos.map(todo => todo.id)) + 1 : 1;
+    return (Object.keys(localStorage).length) ? Math.max(...Object.keys(localStorage)) + 1 : 1;
   };
 
   // ----- Check Todo Keyword
   const checkTodoKeyword = (keyword) => {
     let addKeywords = (keywords.length < 3) ? keywords = [...keywords, keyword] : keywords;
-    
     let keywordsHtml = '';
-    console.log(addKeywords);
     addKeywords.forEach(addkeyword => {
       keywordsHtml += `<button class="checkTodoKeyword">${addkeyword}</button>`
     });
@@ -133,7 +122,6 @@ let todos = [
   };
 
   // Event Handler
-  window.onload = render();
 
   // ----- Add Keyword 
   $addTodoKeyword.onkeyup = e => {
@@ -143,7 +131,8 @@ let todos = [
   };
 
   // ----- Click Add Button
-  $addTodoBtn.onclick = () => {
+  $addTodoBtn.onclick = e => {
+    if( $addTodoTitle.value === '') $addTodoBtn.disabled = true
     addTodo();
     $addTodoTitle.setAttribute('placeholder', '제목을 입력해주세요(7자 이내)');
     $addTodoContents.setAttribute('placeholder', '할 일을 설명해주세요!');
