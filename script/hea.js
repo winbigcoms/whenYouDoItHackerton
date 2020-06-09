@@ -7,10 +7,10 @@ $openAddTab.onclick = () => {
   };
 // 할 일(li) 클릭 시 창 아래로 길게 펼쳐지는 것
 const $todos = document.querySelector('.todos');
-const $toggleTodo = document.querySelector('.toggleTodo');
+const $toggleTodo = document.getElementById('toggleTodo');
 $todos.onclick = ({ target }) => {
-    if (!target.matches('.todo') && !target.matches('.todoExplain') && !target.matches('.todoTitle') && !target.matches('p')) return;
-    // if (!target.matches('.todo' && '.todoExplain' && '.todoTitle' && 'p')) return;
+  if (!target.matches('.todo') && !target.matches('.todoExplain') && !target.matches('.todoTitle') && !target.matches('p')) return;
    $toggleTodo.classList.toggle('hidden');
+   console.log($toggleTodo)
 };
 
