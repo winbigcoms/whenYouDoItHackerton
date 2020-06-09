@@ -13,3 +13,7 @@ $todos.onclick = ({ target }) => {
     $toggleTodo.classList.toggle('hidden');
 
 };
+
+// todo 개별 이벤트_완료
+// todo 개별 이벤트_삭제
+// todo 개별 이벤트_수정
