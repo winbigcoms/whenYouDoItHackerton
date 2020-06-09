@@ -9,8 +9,16 @@ $openAddTab.onclick = () => {
 const $todos = document.querySelector('.todos');
 const $toggleTodo = document.querySelector('.toggleTodo');
 $todos.onclick = ({ target }) => {
-    if (!target.matches('.todo') && !target.matches('.todoExplain') && !target.matches('.todoTitle') && !target.matches('p')) return;
-    // if (!target.matches('.todo' && '.todoExplain' && '.todoTitle' && 'p')) return;
-   $toggleTodo.classList.toggle('hidden');
+  if (!target.matches('.todo') && !target.matches('.todoExplain') && !target.matches('.todoTitle') && !target.matches('p')) return;
+  if (target.matches('.todo')) {
+    target.lastElementChild.classList.toggle('hidden');
+    // target.querySelector(".toggleTodo").classList.toggle('hidden');
+  } else if (target.matches('.todoExplain')) {
+    target.nextElementSibling.classList.toggle('hidden');
+  } else {
+    target.parentNode.nextElementSibling.classList.toggle('hidden');
+  }
+  
+   console.log(target);
 };
 
