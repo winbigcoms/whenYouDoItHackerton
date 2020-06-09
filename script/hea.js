@@ -5,28 +5,32 @@ const $addTodoSection = document.querySelector('.addTodoSection');
 $openAddTab.onclick = () => {
     $addTodoSection.classList.toggle('hidden');
   };
-// 할 일(li) 클릭 시 창 아래로 길게 펼쳐지는 것
 
 const $todos = document.querySelector('.todos');
 const $toggleTodo = document.getElementById('toggleTodo');
 
+// todos 삭제
+const $delBtn = document.querySelector('.delBtn');
+const delBtn = ({target}) => {
+  if (!target.matches('.todo > .toggleTodo > .delBtn')) return;
+  console.log(todos)
+  todos = todos.filter(todo => todo.id !== +target.parentNode.parentNode.id);
+};
+$todos.addEventListener('click', delBtn);
+
+// 할 일(li) 클릭 시 창 아래로 길게 펼쳐지는 것  
 $todos.onclick = ({ target }) => {
   if (!target.matches('.todo') && !target.matches('.todoExplain') && !target.matches('.todoTitle') && !target.matches('p')) return;
   if (target.matches('.todo')) {
     target.lastElementChild.classList.toggle('hidden');
     // target.querySelector(".toggleTodo").classList.toggle('hidden');
   } else if (target.matches('.todoExplain')) {
-    
+
     target.nextElementSibling.classList.toggle('hidden');
   } else {
     
     target.parentNode.nextElementSibling.classList.toggle('hidden');
   }
-  if(!target.matches('.todo > .toggleTodo > .delBtn')) return;
-  delBtn(target.parentNode.parentNode.id);
-  console.log(target.parentNode.parentNode.id)
-  render();
-
 };
 
 // todos 수정
@@ -34,11 +38,7 @@ $todos.onclick = ({ target }) => {
 // $fixBtn.onclick = () => {
 //   $addTodoSection.classList.toggle('hidden'); 
 // };
-// todos 삭제
-const $delBtn = document.querySelector('.delBtn');
-const delBtn = id => {
-  todos = todos.filter(todo => todo.id !== +id);
-};
+
 
 // todos 완료체크
 // const $completeBtn = document.querySelector('.completeBtn');
