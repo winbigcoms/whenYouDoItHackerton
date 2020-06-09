@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="./style/style.css">
   <script src="./script/moment.js"></script>
   <script src="./script/seung.js" defer></script>
-  <script src="./script/hea.js" defer></script>
   <script src="./script/min.js" defer></script>
+  <script src="./script/hea.js" defer></script>
 </head>
 <body>
   <h1 class="a11y-hidden">언제할꺼야</h1>
@@ -31,7 +31,7 @@
     <h2 class="a11y-hidden"></h2>
     <section class="todoSection">
       <ul class="todos">
-        <li class="todo" id="">
+        <li class="todo">
           <div class="todoExplain">
             <h3 class="todoTitle">공원가기</h3>
             <p class="todoCompleted">미완료</p>
@@ -39,7 +39,7 @@
             <p class="todoDeadLine">2020/06/18/20:00</p>
             <p class="todoKeyword">#일이삼사오#일이삼사오#일이삼사오</p>
           </div>
-          <div class="toggleTodo">
+          <div class="toggleTodo hidden">
             <p class="todoContents">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
             <button class="fixBtn icon-pencil"></button>
             <button class="delBtn icon-trash-empty"></button>
@@ -48,7 +48,7 @@
         </li>
       </ul>
     </section>
-    <section class="addTodoSection">
+    <section class="addTodoSection hidden">
       <form action="javascript:void(0)" class="addTodoForm">
         <legend>할일 추가 하기</legend>
         <input type="text" maxlength="7" class="addTodoTitle" placeholder="제목을 입력해주세요(7자 이내)">
@@ -234,7 +234,7 @@
         </section>
       </form>
     </section>
-    <button class="openAddTab">asd
+    <button class="openAddTab">+
     </button>
   </main>
   <footer>

@@ -51,11 +51,11 @@
           <p class="todoDeadLine">${todo.todoDeadLine}</p>
           <p class="todoKeyword">${todo.todoKeyword}</p>
         </div>
-        <div>
+        <div class="hidden toggleTodo" id="toggleTodo">
           <p class="todoContents">${todo.todoContents}</p>
-          <button class="fixBtn"></button>
-          <button class="delBtn"></button>
-          <button class="completeBtn"></button>
+          <button class="fixBtn icon-pencil"></button>
+          <button class="delBtn icon-trash-empty"></button>
+          <button class="completeBtn icon-ok"></button>
         </div>
       </li>`;
     });
