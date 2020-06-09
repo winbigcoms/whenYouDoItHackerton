@@ -32,13 +32,23 @@
   const render = () => {
     todos = [
       {
+        id: 1,
         todoTitle: 'This is title',
         todoCompleted: false,
         todoImportance: 3,
         todoDeadLine: '2020/06/09/12:00',
         todoKeyword: ['keyword01', 'keyword02', 'keyword03'],
         todoContents: 'This is todo contents'
-      }
+      },{
+        id: 2,
+        todoTitle: 'This is title02',
+        todoCompleted: false,
+        todoImportance: 3,
+        todoDeadLine: '2020/06/09/12:00',
+        todoKeyword: ['keyword01', 'keyword02', 'keyword03'],
+        todoContents: 'This is todo contents'
+      },
+      
     ]
     let html = '';
     todos.forEach((todo) => {
@@ -60,56 +70,41 @@
       </li>`;
     });
     $todos.innerHTML = html;
+    
+    console.log(todos);
   };
 
 
   // ----- Add todo
   const addTodo = () => {
     todos = [...todos, {
-      id: 1,
+      id: genterateId(),
       todoTitle: $addTodoTitle.value,
       todoCompleted: false,
-      todoImportance: $addTodoImportance.value,
+      todoImportance: getTodoImportance(),
       todoDeadLine: `${addTodoYear.value}/${addTodoMonth.value}/${addTodoDay.value}/${addTodoHour.value}:${addTodoMinute.value}`,
-      todoKeyword: keywords.split(''),
+      todoKeyword: checkTodoKeyword(),
       todoContents: $addTodoContents.value,
     }];
     keywords = [];
-    // todos = [...todos, {
-    //   id: 1,
-    //   todoTitle: '',
-    //   todoCompleted: false,
-    //   todoImportance: 0,
-    //   todoDeadLine: `${addTodoYear.value}/${addTodoMonth.value}/${addTodoDay.value}/${addTodoHour.value}:${addTodoMinute.value}`,
-    //   todoKeyword: [],
-    //   todoContents: '',
-    // }]; 
+    console.log(todos);
   }; 
 
-  // ----- Fix todo
-  /*
-  const fixTodo = (id) => {
-    todos.map(todo => {
-      if (id !== todo.id) return;
-      todos = [...todos, {
-        id: 1,
-        todoTitle: $addTodoTitle.value,
-        todoCompleted: false,
-        todoImportance: $addTodoImportance.value,
-        todoDeadLine: `${addTodoYear.value}/${addTodoMonth.value}/${addTodoDay.value}/${addTodoHour.value}:${addTodoMinute.value}`,
-        todoKeyword: $addTodoKeyword.value,
-        todoContents: $addTodoContents.value,
-      }];
-    }); 
+  // ----- Generate Id
+  const genterateId = () => {
+    console.log(todos.map(todo => todo.id));
+    return (todos.length) ? Math.max(...todos.map(todo => todo.id)) + 1 : 1;
   };
-  */
 
   // ----- Add Keyword 
-  const checkTodoKeyword = () => {
-    // if (keywords.length > 3) keywords.;
-    // console.log(keywords);
+  const getTodoImportance = id => {
+    importance = id;
   };
 
+  // ----- Check Todo Keyword
+  const checkTodoKeyword = (keyword) => {
+    return (keywords.length < 3) ? keywords = [...keywords, keyword] : keywords;
+  };
   // Event Handler
   window.onload = render();
 
@@ -124,18 +119,12 @@
   // li의 id와, todo의 id 비교후 맞으면 todo의 keyword에 push 해주기
   $addTodoKeyword.onkeyup = e => {
     if (e.keyCode !== 13) return;
-    // todos.map(todo => {
-    //   if (todos.)
-    // });
-    checkTodoKeyword();
-    // if (keywords.length > 3) return;
-    if (keywords.length < 3) keywords += $addTodoKeyword.value;
+    checkTodoKeyword($addTodoKeyword.value);
     $addTodoKeyword.value = '';
   };
 
   $addTodoBtn.onclick = () => {
     addTodo();
-    console.log(todos);
   };
 
   // ----- importance
@@ -148,5 +137,6 @@
         button.innerHTML = '☆';
       }
     });
+    getTodoImportance(e.target.id);
   };
 })();
