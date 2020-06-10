@@ -67,9 +67,9 @@ const render = () => {
     $todos.innerHTML = '';
     $todos.innerHTML += html;
   })
+  // 초기 날짜설정
   settingSelectTime()
 };
-// 초기 날짜설정
 
 let addState = "add";
 let fixedId ="";

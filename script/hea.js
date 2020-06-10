@@ -2,6 +2,7 @@
 const $openAddTab = document.querySelector('.openAddTab');
 $openAddTab.onclick = () => {
   addState = "add"
+  settingSelectTime()
   $addTodoSection.classList.toggle('hidden');
 };
 
