@@ -35,7 +35,8 @@ $todos.onclick = ({ target }) => {
 const $delBtn = document.querySelector('.delBtn');
 const delBtn = ({target}) => {
   if (!target.matches('.todo > .toggleTodo > .delBtn')) return;
-  localStorage.removeItem(target.parentNode.parentNode.id)
+
+  localStorage.removeItem(target.parentNode.parentNode.id);
   render();
 };
 $todos.addEventListener('click', delBtn);
@@ -46,6 +47,7 @@ const $completeBtn = document.querySelector('.completeBtn');
 const completeBtn = ({ target }) => {
   if (!target.matches('.todo > .toggleTodo > .completeBtn')) return;
   let todoObject = JSON.parse(localStorage.getItem(target.parentNode.parentNode.id));
+  console.log(todoObject)
   todoObject.todoCompleted = true;
   let todoJson = JSON.stringify(todoObject);
   localStorage.setItem(target.parentNode.parentNode.id,todoJson);

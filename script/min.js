@@ -1,3 +1,4 @@
+
 const $todos = document.querySelector('.todos');
 
 const render = () => {
@@ -68,6 +69,7 @@ $addTodoKeyword.onblur = () => {
   }
 }
 
+
   // ----- Add todo
   const addTodo = () => {
     let addTodoObject = {
@@ -121,6 +123,20 @@ $addTodoKeyword.onblur = () => {
     return keywords.join(' ');
   };
 
+  // ----- Remove Keyword
+  const removeKeyword = (e) => {
+      keywords = keywords.filter(keyword => {
+        console.log(e.target.textContent === keyword);
+        return keyword !== e.target.textContent
+      });
+      [...$checkTodoKeywords.children].forEach( btn => {
+        if (btn === e.target) $checkTodoKeywords.removeChild(e.target);
+      })
+
+    // });
+    //console.log(keywords);
+  };
+
   // Event Handler
 
   // ----- Add Keyword 
@@ -145,7 +161,8 @@ $addTodoKeyword.onblur = () => {
 
   // ---- Click Keyword in popup
   $checkTodoKeywords.onclick = (e) => {
-    // e.target.par
+    if (!e.target.matches('button')) return;
+    removeKeyword(e);
   };
 
   // ----- importance
