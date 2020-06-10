@@ -18,23 +18,24 @@ const setFirstView = () => {
   $nowDate.innerHTML = calDate();
   if(localStorage.length === 0) return;
   let todosKey = Object.keys(localStorage);
-  // todosKey.forEach( key => {
-  //   if( JSON.parse(localStorage.getItem(key)).todoCompleted === false && Date.parse(JSON.parse(localStorage.getItem(key)).todoDeadLine) <= Date.parse(`${moment().format("YYYY/MM/DD/HH:mm")}:00`)){
-  //     let checkLi = document.getElementById(`${JSON.parse(localStorage.getItem(key)).id}`)
-  //     // JSON.parse(localStorage.getItem(key)).
-  //     checkLi.classList.add("completed");
-  //     checkLi.querySelector(".todoCompleted").innerHTML="완료";
-  //     todoObject.todoCompleted = true;
-  //     let todoJson = JSON.stringify(todoObject);
-  //     localStorage.setItem(target.parentNode.parentNode.id,todoJson);
-  //   }
-
-  // })
 }
 const $addTodoForm = document.querySelector(".addTodoForm");
 
 setInterval(setFirstView,1000)
-
+const  checkDone = () => {  
+  if(localStorage.length === 0) return;
+  Object.keys(localStorage).forEach( key => {
+    let todo = JSON.parse(localStorage.getItem(key));
+    
+    if( todo.todoCompleted === false && Date.parse(todo.todoDeadLine+":00") < Date.now()){
+      let fixTodo = {...todo, ...{todoCompleted:false , todoDeadLine : "실패ㅠㅠ"}}
+      localStorage.setItem(key,JSON.stringify(fixTodo));
+      render();
+      // document.getElementById(`${key}`).classList.add("fali");
+    }
+  })
+}
+setInterval(checkDone,60000);
 
 window.onload= setFirstView;
 window.addEventListener("load",render);
@@ -42,16 +43,9 @@ $addTodoForm.onkeydown = e => {
   if(e.keyCode === 13)e.preventDefault();
 }
 
-// const $addTodoYear = document.querySelector("#addTodoYear");
-// const $addTodoMonth = document.querySelector("#addTodoMonth");
-// const $addTodoDay = document.querySelector("#addTodoDay");
-// const $addTodoHour = document.querySelector("#addTodoHour");
-// const $addTodoMinute = document.querySelector("#addTodoMinute");
-
 const $day30 = document.querySelector("#addTodoDay option[value='30']");
 const $day29 = document.querySelector("#addTodoDay option[value='29']");
 const $day28 = document.querySelector("#addTodoDay option[value='28']");
-// const $comfirmDayState = document.querySelector(".comfirmDayState");
 const isTimeOk = () => {
   let year = $addTodoYear.value;
   let month = $addTodoMonth.value;

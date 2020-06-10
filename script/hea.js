@@ -37,8 +37,10 @@ $todos.addEventListener('click', delBtn);
 const $completeBtn = document.querySelector('.completeBtn');
 const completeBtn = ({ target }) => {
   if (!target.matches('.todo > .toggleTodo > .completeBtn')) return;
+  if (target.parentNode.parentNode.classList.contains("completed")) return;
   let todoObject = JSON.parse(localStorage.getItem(target.parentNode.parentNode.id));
   todoObject.todoCompleted = !todoObject.todoCompleted;
+  todoObject.todoDeadLine = "성공٩(ˊᗜˋ*)و"
   let todoJson = JSON.stringify(todoObject);
   localStorage.setItem(target.parentNode.parentNode.id,todoJson);
   render()

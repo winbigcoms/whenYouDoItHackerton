@@ -48,10 +48,10 @@ const render = () => {
   let html = '';
   todosArr.forEach( todos => {
     html += `
-      <li class="todo" id="${todos.id}">
+      <li class="todo ${todos.todoCompleted? "completed":todos.todoDeadLine === "실패ㅠㅠ"?"fail":""}" id="${todos.id}">
         <div class="todoExplain">
           <h3 class="todoTitle">${todos.todoTitle}</h3>
-          <p class="todoCompleted ${todos.todoCompleted? "completed":""}">${todos.todoCompleted}</p>
+          <p class="todoCompleted">${todos.todoCompleted}</p>
           <p class="todoImportance">${todos.todoImportance}</p>
           <p class="todoDeadLine">${todos.todoDeadLine}</p>
           <p class="todoKeyword">${todos.todoKeyword}</p>
@@ -83,12 +83,10 @@ let fixedId ="";
   const addTodo = (state, fixId) => {
     // keywords = '';
     if ($addTodoTitle.value.trim() === '') {
-      $addTodoTitle.value = "";
       $addTodoTitle.focus();
       $addTodoTitle.setAttribute('placeholder', '!!!!!빈칸없이 입력해주세요.');
       return 
     } else if ($addTodoContents.value.trim() === '') {
-      $addTodoContents.value = "";
       $addTodoContents.focus();
       $addTodoContents.setAttribute('placeholder', '!!!!!빈칸없이 입력해주세요.');
       return 
